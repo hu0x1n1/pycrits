@@ -17,12 +17,14 @@ class pycritsFetchError(Exception):
 class pycrits(object):
     _API_VERSION       = '/api/v1/'
     _ACTORS            = 'actors/'
+    _BACKDOORS         = 'backdoors/'
     _ACTOR_IDENTIFIERS = 'actoridentifiers/'
     _CAMPAIGNS         = 'campaigns/'
     _CERTIFICATES      = 'certificates/'
     _DOMAINS           = 'domains/'
     _EMAILS            = 'emails/'
     _EVENTS            = 'events/'
+    _EXPLOITS          = 'exploits/'
     _INDICATORS        = 'indicators/'
     _IPS               = 'ips/'
     _PCAPS             = 'pcaps/'
@@ -187,6 +189,9 @@ class pycrits(object):
     def actor_identifiers(self, params={}, total=-1):
         return self._fetch_generator(self._ACTOR_IDENTIFIERS, total, params=params)
 
+    def backdoors(self, params={}, total=-1):
+        return self._fetch_generator(self._BACKDOORS, total, params=params)
+
     def campaigns(self, params={}, total=-1):
         return self._fetch_generator(self._CAMPAIGNS, total, params=params)
 
@@ -201,6 +206,9 @@ class pycrits(object):
 
     def events(self, params={}, total=-1):
         return self._fetch_generator(self._EVENTS, total, params=params)
+
+    def exploits(self, params={}, total=-1):
+        return self._fetch_generator(self._EXPLOITS, total, params=params)
 
     def indicators(self, params={}, total=-1):
         return self._fetch_generator(self._INDICATORS, total, params=params)
@@ -230,6 +238,9 @@ class pycrits(object):
     def actor_identifier(self, id_, params={}):
         return self._single_fetch(self._ACTOR_IDENTIFIERS + id_ + '/', params)
 
+    def backdoor(self, id_, params={}):
+        return self._single_fetch(self._BACKDOORS + id_ + '/', params)
+
     def campaign(self, id_, params={}):
         return self._single_fetch(self._CAMPAIGNS + id_ + '/', params)
 
@@ -244,6 +255,9 @@ class pycrits(object):
 
     def event(self, id_, params={}):
         return self._single_fetch(self._EVENTS + id_ + '/', params)
+
+    def exploit(self, id_, params={}):
+        return self._single_fetch(self._EXPLOITS + id_ + '/', params)
 
     def indicator(self, id_, params={}):
         return self._single_fetch(self._INDICATORS + id_ + '/', params)
@@ -288,6 +302,9 @@ class pycrits(object):
     def actor_identifier_count(self, params={}):
         return self._fetch_count(self._ACTOR_IDENTIFIERS, params)
 
+    def backdoor_count(self, params={}):
+        return self._fetch_count(self._BACKDOORS, params)
+
     def campaign_count(self, params={}):
         return self._fetch_count(self._CAMPAIGNS, params)
 
@@ -302,6 +319,9 @@ class pycrits(object):
 
     def event_count(self, params={}):
         return self._fetch_count(self._EVENTS, params)
+
+    def exploit_count(self, params={}):
+        return self._fetch_count(self._EXPLOITS, params)
 
     def indicator_count(self, params={}):
         return self._fetch_count(self._INDICATORS, params)
